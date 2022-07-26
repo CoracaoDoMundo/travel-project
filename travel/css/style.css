@@ -593,13 +593,40 @@ a.anchor {
     display: flex;
     justify-content: center;
     position: relative;
-    overflow: hidden;
+
     margin-bottom: 20px;
 }
 
-.slider_block {
+.slider__wrapper {
+    display: flex;
+    /* justify-content: center; */
+}
+
+.carousel {
+    display: flex;
+    /* justify-content: center; */
     position: relative;
-    margin: 0 30px;
+    left: -3120px;
+    gap: 60px;
+
+}
+
+.carousel-wrapper {
+    width: 1440px;
+    overflow: hidden;
+}
+
+.slide {
+    display: flex;
+    position: relative;
+    /* order: 1; */
+    /* display: none; */
+    /* transition: all ease 1s; */
+}
+
+.slide.active {
+    /* display: block; */
+    /* order: 0; */
 }
 
 .slider_pic {
@@ -622,14 +649,14 @@ a.anchor {
     color: #FFFFFF;
 }
 
-.slider_marks_big {
+.dots-wrapper {
     display: flex;
     justify-content: center;
     margin-left: 8px;
     margin-bottom: 40px;
 }
 
-.slider_marks_big:last-child {
+.dots-wrapper:last-child {
     margin-right: 0;
 }
 
@@ -640,23 +667,19 @@ a.anchor {
     bottom: -40px;
 }
 
-.middle {
+/* .middle {
     background-color: rgba(242, 120, 92, 1);
-}
+} */
 
-.not_middle {
-    background-color: rgba(242, 120, 92, 0.5);
-}
-
-.point {
+.dot {
     width: 20px;
     height: 20px;
     border-radius: 50%;
     margin-right: 10px;
+    background-color: rgba(242, 120, 92, 0.5);
 }
 
 .slider_button {
-
     padding: 10px 32px;
     gap: 10px;
     width: 228px;
@@ -672,8 +695,45 @@ a.anchor {
     line-height: 32px;
 }
 
-.slideer_arrows {
+.slider_arrows {
     display: none;
+}
+
+.button_slider {
+    position: absolute;
+    z-index: 20;
+    width: 20%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.btn-prev {
+    left: 0;
+}
+
+.btn-next {
+    right: 0;
+}
+
+@keyframes move-left {
+    from {left: -540px;}
+    to {left: 330px;}
+}
+
+.transition-left {
+    animation-name: move-left;
+    animation-duration: 3s;
+}
+
+@keyframes move-right {
+    from {left: -540px;}
+    to {left: -1410px;}
+}
+
+.transition-right {
+    animation-name: move-right;
+    animation-duration: 3s;
 }
 
 /* slider styles end */
@@ -1123,12 +1183,12 @@ a.anchor {
         margin: 0;
     }
 
-    .slider_block_japan,
+    /* .slider_block_japan,
     .middle {
         order: -1;
-    }
+    } */
 
-    .point {
+    .dot {
         width: 8px;
         height: 8px;
         margin: 0;
@@ -1140,7 +1200,7 @@ a.anchor {
         left: 45%;
     }
 
-    .slider_marks_big {
+    .dots-wrapper {
         display: none;
     }
 
