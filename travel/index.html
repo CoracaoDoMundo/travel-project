@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" href="img/svg/icon_title.svg" />
-    <script src="index.js"></script>
   </head>
   <body>
     <header class="header">
@@ -16,7 +15,6 @@
         <div class="header_wrapper">
           <div class="header_logo">
             <a href="/" class="header_logo-link">
-
               <picture>
                 <source
                   srcset="img/svg/logo_header.svg"
@@ -61,7 +59,9 @@
                 >
               </li>
               <li class="header_item header_item_hidden">
-                <a href="#account" class="header_link account">Account</a>
+                <a href="#popup" class="header_link account popup__link"
+                  >Account</a
+                >
               </li>
               <li class="header_item header_item_hidden">
                 <a href="#social_media" class="header_link header_link_social"
@@ -71,7 +71,9 @@
             </ul>
           </nav>
           <button class="button header_button" type="button">
-            <span class="button_text header_button_text">Login</span>
+            <a href="#popup" class="popup__link"
+              ><span class="button_text header_button_text">Login</span></a
+            >
           </button>
           <div class="header_burger burger">
             <span class="burger_line burger_line_first"></span>
@@ -82,6 +84,55 @@
         </div>
       </div>
     </header>
+    <div id="popup" class="popup hidden">
+      <div class="popup__body">
+        <div class="popup__content">
+          <h4 class="popup__headline">Log in to your account</h4>
+          <button class="popup__button button__facebook" type="button">
+            <span class="popup__button__text button__facebook__text"
+              ><img
+                src="img/svg/facebook_logo.svg"
+                alt="facebook logotype"
+                class="popup__logo"
+              />Sign In with Facebook</span
+            >
+          </button>
+          <button class="popup__button button__google" type="button">
+            <span class="popup__button__text button__google__text"
+              ><img
+                src="img/svg/google_logo.svg"
+                alt="google logotype"
+                class="popup__logo"
+              />Sign In with Google</span
+            >
+          </button>
+          <div class="popup__separator">
+            <div class="popup__line separator__line"></div>
+            <span class="separator__text">or</span>
+            <div class="popup__line separator__line"></div>
+          </div>
+          <div class="input__zone">
+            <p class="input__text">E-mail</p>
+            <input type="text" class="popup__form popup_email" id="email" />
+            <p class="input__text">Password</p>
+            <input type="text" class="popup__form popup_pass" id="password" />
+          </div>
+          <button class="popup__button button__sign-in" type="button">
+            <span class="popup__button__text button__sign-in__text"
+              >Sign In</span
+            >
+          </button>
+          <a href="/" class="forgot-password popup__link__text"
+            >Forgot Your Password?</a
+          >
+          <div class="popup__line popup__line__bottom"></div>
+          <a href="/" class="popup_register popup__link__text"
+            ><span class="popup__link__text__thin">Don’t have an account? </span
+            ><span class="register__link">Register</span></a
+          >
+        </div>
+      </div>
+    </div>
     <section class="intro">
       <div class="wrapper">
         <div class="plan_your_trip">
@@ -164,61 +215,159 @@
               /></a>
             </div>
           </div>
-          <div class="slider_marks_small">
-            <a href="#spain_pic" class="point not_middle"></a>
-            <a href="#japan_pic" class="point middle"></a>
-            <a href="#usa_pic" class="point not_middle"></a>
-          </div>
-          <div class="slider_block slider_block_spain">
-            <picture>
-              <source
-                srcset="img/img_slider_spain.jpg"
-                media="(min-width: 450px)"
-              />
-              <img
-                src="img/img_slider_spain_mobile.jpg"
-                alt="Photo Spain"
-                class="slider_pic"
-                id="spain_pic"
-              />
-            </picture>
-            <p class="slider_text">SPAIN</p>
-          </div>
-          <div class="slider_block slider_block_japan">
-            <picture>
-              <source
-                srcset="img/img_slider_japan.jpg"
-                media="(min-width: 450px)"
-              />
-              <img
-                src="img/img_slider_japan_mobile.jpg"
-                alt="Photo Japan"
-                class="slider_pic"
-                id="japan_pic"
-              />
-            </picture>
-            <p class="slider_text">JAPAN</p>
-          </div>
-          <div class="slider_block slider_block_usa">
-            <picture>
-              <source
-                srcset="img/img_slider_usa.jpg"
-                media="(min-width: 450px)"
-              />
-              <img
-                src="img/img_slider_usa_mobile.jpg"
-                alt="Photo USA"
-                class="slider_pic"
-                id="usa_pic"
-              />
-            </picture>
-            <p class="slider_text">USA</p>
+          <!-- <div class="slider_marks_small">
+            <a href="#spain_pic" class="not_middle dot"></a>
+            <a href="#japan_pic" class="middle dot active"></a>
+            <a href="#usa_pic" class="not_middle dot"></a>
+          </div> -->
+          <div class="slider__wrapper" id="slide-area">
+            <div class="button_slider btn-prev" id="btn-left"></div>
+            <div class="carousel-wrapper" id="carousel-wrapper">
+              <div class="carousel" id="carousel">
+                <div class="slide">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_spain.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_spain_mobile.jpg"
+                      alt="Photo Spain"
+                      class="slider_pic"
+                      id="spain_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">SPAIN</p>
+                </div>
+                <div class="slide">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_japan.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_japan_mobile.jpg"
+                      alt="Photo Japan"
+                      class="slider_pic"
+                      id="japan_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">JAPAN</p>
+                </div>
+                <div class="slide">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_usa.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_usa_mobile.jpg"
+                      alt="Photo USA"
+                      class="slider_pic"
+                      id="usa_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">USA</p>
+                </div>
+                <div class="slide" id="item-left">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_spain.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_spain_mobile.jpg"
+                      alt="Photo Spain"
+                      class="slider_pic"
+                      id="spain_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">SPAIN</p>
+                </div>
+                <div class="slide" id="item-active">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_japan.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_japan_mobile.jpg"
+                      alt="Photo Japan"
+                      class="slider_pic"
+                      id="japan_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">JAPAN</p>
+                </div>
+                <div class="slide" id="item-right">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_usa.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_usa_mobile.jpg"
+                      alt="Photo USA"
+                      class="slider_pic"
+                      id="usa_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">USA</p>
+                </div>
+                <div class="slide">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_spain.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_spain_mobile.jpg"
+                      alt="Photo Spain"
+                      class="slider_pic"
+                      id="spain_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">SPAIN</p>
+                </div>
+                <div class="slide">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_japan.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_japan_mobile.jpg"
+                      alt="Photo Japan"
+                      class="slider_pic"
+                      id="japan_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">JAPAN</p>
+                </div>
+                <div class="slide">
+                  <picture>
+                    <source
+                      srcset="img/img_slider_usa.jpg"
+                      media="(min-width: 450px)"
+                    />
+                    <img
+                      src="img/img_slider_usa_mobile.jpg"
+                      alt="Photo USA"
+                      class="slider_pic"
+                      id="usa_pic"
+                    />
+                  </picture>
+                  <p class="slider_text">USA</p>
+                </div>
+              </div>
+            </div>
+            <div class="button_slider btn-next" id="btn-right"></div>
           </div>
         </div>
-        <div class="slider_marks_big">
-          <a href="#spain_pic" class="point not_middle"></a>
-          <a href="#japan_pic" class="point middle"></a>
-          <a href="#usa_pic" class="point not_middle"></a>
+        <div class="dots-wrapper">
+          <a href="#spain_pic" class="dot"></a>
+          <a href="#japan_pic" class="dot"></a>
+          <a href="#usa_pic" class="dot"></a>
         </div>
         <div class="button_zone">
           <button class="button slider_button" type="button">
