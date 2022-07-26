@@ -147,6 +147,215 @@ a.anchor {
     justify-content: center;
 }
 
+/*popup styles start*/
+
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .8s ease 0s;
+}
+
+.popup__body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+}
+
+.popup__content {
+    width: 45%;
+    height: 80%;
+    background: linear-gradient(177.09deg, #FFFFFF 6.15%, #0D606F 202.69%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    transition: all .8s ease 0s;
+    opacity: 0;
+    transform: translate(0px, -100%);
+}
+
+.popup.open .popup__content {
+    transform: translate(0px, 0px);
+    opacity: 1;
+}
+
+/* experiment start */
+
+.popup.signup .button__facebook {
+    display: none;
+}
+
+.popup.signup .button__google {
+    display: none;
+}
+
+.popup.signup .popup__separator {
+    display: none;
+}
+
+.popup.signup .forgot-password {
+    display: none;
+}
+
+/* experiment end */
+
+.popup.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup__headline {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    margin-top: 4%;
+    margin-bottom: 4.5%;
+}
+
+.popup__button {
+    width: 86%;
+    height: 8.5%;
+    border: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.popup__button:hover {
+    box-shadow: 0px 0px 10px 2px rgba(23, 140, 161, 0.47);
+    transition: box-shadow 0.3s;
+}
+
+.popup__logo {
+    padding-right: 15px;
+}
+
+.button__facebook {
+    background: #1877F2;
+    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+}
+
+.button__facebook__text,
+.button__sign-in__text {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #FFFFFF;
+}
+
+.button__google {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+}
+
+.button__google__text {
+    font-family: 'Red Hat Text';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: #0D606F;
+    display: flex;
+    justify-content: center;
+}
+
+.popup__button__text {
+    display: flex;
+    justify-content: center;
+}
+
+.popup__separator {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    gap: 2%
+}
+
+.popup__line {
+    width: 13.5em;
+    height: 0px;
+    border-top: 0.1px solid rgba(13, 96, 111, 0.5);
+}
+
+.input__zone {
+    width: 86%;
+    height: 30.5%;
+}
+
+.input__text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 0 auto 5px 0;
+}
+
+.popup__form {
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 3px rgba(13, 96, 111, 0.08), inset 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    height: 27%;
+    margin-bottom: 20px;
+}
+
+.button__sign-in {
+    background: #0D606F;
+    box-shadow: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.popup__link__text {
+    font-family: 'Aleo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+    color: #0D606F;
+    text-decoration: none;
+}
+
+.forgot-password {
+    margin-bottom: 4%;
+}
+
+.popup__link {
+    text-decoration: none;
+}
+
+.popup__link__text__thin {
+    color: rgba(13, 96, 111, 0.5);
+}
+
+.popup__line__bottom {
+    width: 86%;
+    margin-bottom: 3%;
+}
+
+.register__link,
+.forgot-password {
+    text-decoration: underline;
+}
+
+/*popup styles end*/
+
 /*header styles start*/
 
 .header {
@@ -658,19 +867,20 @@ a.anchor {
         transition: .3s all linear;
     }
 
-    .header_logo, .burger {
+    .header_logo,
+    .burger {
         margin: 3% 2% 0 0;
     }
 
     .close_menu {
-        position:sticky;
+        position: sticky;
         z-index: 1;
         width: 100vh;
         height: 100vh;
     }
 
     .close_menu_second_part {
-        position:absolute;
+        position: absolute;
         z-index: 1;
         width: 100%;
         height: 688px;
@@ -724,6 +934,10 @@ a.anchor {
     .header_button {
         display: none;
     }
+
+    .popup__content {
+        width: 60%;
+    }
 }
 
 @media screen and (max-width: 850px) {
@@ -739,22 +953,19 @@ a.anchor {
     .header_logotype {
         height: 32px;
         width: 32px;
-        margin: 20% 0 0 5% ;
-        
+        margin: 20% 0 0 5%;
+
     }
 
     .slider_pic {
         max-width: 370px;
         max-height: 370px;
     }
-}
 
-/* @media screen and (max-width: 750px) {
-    .header{
-        padding-top: 50%;
+    .popup__content {
+        width: 90%;
     }
-
-} */
+}
 
 @media screen and (max-width: 680px) {
 
