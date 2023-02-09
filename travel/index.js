@@ -1,91 +1,67 @@
-// BURGER MENU //
+// BURGER MENU START //
 
-(function () {
-  const burgerItem = document.querySelector(".burger");
-  menu = document.querySelector(".header_nav");
-  menuCloseItem = document.querySelector(".header_nav_close");
-  menuCloseItemAcc = document.querySelector(".account");
-  menuCloseItemHow = document.querySelector(".header_link_works");
-  menuCloseItemPlan = document.querySelector(".header_link_plan");
-  menuCloseItemDest = document.querySelector(".header_link_destinations");
-  menuCloseItemStory = document.querySelector(".header_link_stories");
-  menuCloseItemSocial = document.querySelector(".header_link_social");
-  menuCloseItemAll = document.querySelector(".close_menu");
-  menuCloseItemAllDown = document.querySelector(".close_menu_second_part");
+// (function () {
+const burgerItem = document.querySelector(".burger"),
+  menu = document.querySelector(".header_nav"),
+  menuCloseItem = document.querySelector(".header_nav_close"),
+  menuCloseItemAcc = document.querySelector(".account"),
+  menuCloseItemAll = document.querySelector(".close_menu"),
+  menuItems = document.querySelectorAll(".header_item");
 
-  burgerItem.addEventListener("click", () => {
-    menu.classList.add("header_nav_activ");
-  });
-  menuCloseItem.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-  menuCloseItemHow.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-  menuCloseItemPlan.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-  menuCloseItemDest.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-  menuCloseItemStory.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-  menuCloseItemSocial.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-  menuCloseItemAll.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-  menuCloseItemAllDown.addEventListener("click", () => {
-    menu.classList.remove("header_nav_activ");
-  });
-})();
-
-// POPUP //
-
-const popupLinks = document.querySelectorAll(".popup__link");
-body = document.querySelector(".body");
-lockPadding = document.querySelectorAll(".lock-padding");
-popupActive = document.querySelector(".popup.open");
-register = document.querySelector(".register__link");
-popupSignup = document.querySelector(".popup.signup");
-popup = document.querySelector(".popup__content");
-buttonText = document.querySelector(".button__sign-in__text");
-
-for (let i = 0; i < popupLinks.length; i++) {
-  const popupLink = popupLinks[i];
-  popupLink.addEventListener("click", (event) => {
-    const popupName = popupLink.getAttribute("href").replace("#", "");
-    const currentPopup = document.getElementById(popupName);
-    popupOpen(currentPopup);
-    event.preventDefault();
-  });
+function openMenu() {
+  menu.classList.add("header_nav_activ");
+  menuCloseItemAll.style.display = "block";
 }
 
-function popupOpen(currentPopup) {
-  currentPopup.classList.add("open");
-  currentPopup.addEventListener("click", (event) => {
+function closeMenu() {
+  menu.classList.remove("header_nav_activ");
+  menuCloseItemAll.style.display = "none";
+}
+
+burgerItem.addEventListener("click", openMenu);
+menuCloseItem.addEventListener("click", closeMenu);
+menuCloseItemAll.addEventListener("click", closeMenu);
+
+for (let i = 0; i < menuItems.length; i++) {
+  menuItems[i].addEventListener("click", closeMenu);
+}
+
+// BURGER MENU END //
+
+// POPUP START //
+
+const popupLinks = document.querySelectorAll(".popup__link"),
+  popup = document.getElementById("popup"),
+  registerHeader = document.querySelector(".popup__headline"),
+  registerLink = document.querySelector(".register__link"),
+  registerText = document.querySelector(".popup__link__text__thin"),
+  fbBtn = document.querySelector(".button__facebook"),
+  googleBtn = document.querySelector(".button__google"),
+  lines = document.querySelectorAll(".separator__line"),
+  sepText = document.querySelector(".separator__text"),
+  signBtn = document.querySelector(".button__sign-in"),
+  singBtnText = document.querySelector(".button__sign-in__text"),
+  forgotPassText = document.querySelector(".forgot-password"),
+  popupBlock = document.querySelector(".popup__content"),
+  popupForms = document.querySelectorAll(".popup__form");
+
+function popupOpen() {
+  popup.classList.add("open");
+}
+
+function popupClose() {
+  this.addEventListener("click", (event) => {
     if (!event.target.closest(".popup__content")) {
-      popupClose(event.target.closest(".popup"));
+      this.classList.remove("open");
     }
   });
 }
 
-function popupClose(popupActive) {
-  popupActive.classList.remove("open");
+for (let i = 0; i < popupLinks.length; i++) {
+  popupLinks[i].addEventListener("click", popupOpen);
 }
 
-// document.querySelector('.register__link').onclick = function() {
-//     document.querySelector('.button__facebook').hidden = true;
-//     document.querySelector('.button__google').hidden = true;
-//     document.querySelector('.popup__separator').hidden = true;
-//     document.querySelector('.forgot-password').hidden = true;
-//   }
-
-// register.addEventListener('click', () => {
-//     popup.classList.add('signup');
-// });
+popup.addEventListener("click", popupClose);
 
 const sign_in__button = document.querySelector(".button__sign-in");
 email = document.querySelector(".popup_email");
@@ -98,6 +74,44 @@ sign_in__button.addEventListener("click", () => {
       `Добро пожаловать, Ваш email: ${email.value}, Ваш пароль: ${pass.value}!`
     );
 });
+
+function registration() {
+  if (registerLink.textContent === "Register") {
+    registerHeader.textContent = "Create account";
+    registerHeader.style.marginBottom = "1.5%";
+    fbBtn.style.display = "none";
+    googleBtn.style.display = "none";
+    lines.forEach((el) => el.style.display = "none");
+    sepText.style.display = "none";
+    popupForms.forEach((el) => el.style.height = "40%");
+    singBtnText.textContent = "Sign Up";
+    signBtn.style.marginBottom = "25px";
+    signBtn.style.marginTop = "70px";
+    signBtn.style.height = "12%";
+    forgotPassText.style.display = "none";
+    registerLink.textContent = "Log in";
+    registerText.textContent = "Already have an account? ";
+    popupBlock.style.height = "436px";
+  } else {
+    registerHeader.textContent = "Log in to your account";
+    registerHeader.style.marginBottom = "4.5%";
+    fbBtn.style.display = "block";
+    googleBtn.style.display = "block";
+    lines.forEach((el) => el.style.display = "block");
+    sepText.style.display = "block";
+    popupForms.forEach((el) => el.style.height = "27%");
+    singBtnText.textContent = "Sign In";
+    signBtn.style.marginBottom = "10px";
+    signBtn.style.marginTop = "0";
+    signBtn.style.height = "8.5%";
+    forgotPassText.style.display = "block";
+    registerLink.textContent = "Register";
+    registerText.textContent = "Don’t have an account? ";
+    popupBlock.style.height = "660px";
+  }
+}
+
+// POPUP END //
 
 // SLIDER //
 
@@ -158,33 +172,33 @@ sign_in__button.addEventListener("click", () => {
 
 // SLIDER 3 //
 
-const BTN_LEFT = document.querySelector("#btn-left");
-const BTN_RIGHT = document.querySelector("#btn-right");
-const CAROUSEL = document.querySelector("#carousel");
+// const BTN_LEFT = document.querySelector("#btn-left");
+// const BTN_RIGHT = document.querySelector("#btn-right");
+// const CAROUSEL = document.querySelector("#carousel");
 
-const moveLeft = () => {
-  CAROUSEL.classList.add("transition-left");
-  BTN_LEFT.removeEventListener("click", moveLeft);
-  BTN_RIGHT.removeEventListener("click", moveRight);
-};
+// const moveLeft = () => {
+//   CAROUSEL.classList.add("transition-left");
+//   BTN_LEFT.removeEventListener("click", moveLeft);
+//   BTN_RIGHT.removeEventListener("click", moveRight);
+// };
 
-const moveRight = () => {
-  CAROUSEL.classList.add("transition-right");
-  BTN_RIGHT.removeEventListener("click", moveRight);
-  BTN_LEFT.removeEventListener("click", moveLeft);
-};
+// const moveRight = () => {
+//   CAROUSEL.classList.add("transition-right");
+//   BTN_RIGHT.removeEventListener("click", moveRight);
+//   BTN_LEFT.removeEventListener("click", moveLeft);
+// };
 
-BTN_LEFT.addEventListener("click", moveLeft);
-BTN_RIGHT.addEventListener("click", moveRight);
+// BTN_LEFT.addEventListener("click", moveLeft);
+// BTN_RIGHT.addEventListener("click", moveRight);
 
-CAROUSEL.addEventListener("animationend", (animationEvent) => {
-  if (animationEvent.animationName === "move-left") {
-    CAROUSEL.classList.remove("transition-left");
-  } else {
-    CAROUSEL.classList.remove("transition-right");
-  }
-  BTN_LEFT.addEventListener("click", moveLeft);
-  BTN_RIGHT.addEventListener("click", moveRight);
-});
+// CAROUSEL.addEventListener("animationend", (animationEvent) => {
+//   if (animationEvent.animationName === "move-left") {
+//     CAROUSEL.classList.remove("transition-left");
+//   } else {
+//     CAROUSEL.classList.remove("transition-right");
+//   }
+//   BTN_LEFT.addEventListener("click", moveLeft);
+//   BTN_RIGHT.addEventListener("click", moveRight);
+// });
 
-console.log("Ваша оценка - 80 баллов \nОтзыв по пунктам ТЗ: \nНе выполненные/не засчитанные пункты: \n1. Три точки внизу отображают \"номер слайда\", то есть каждому слайду соответствует свой кружочек, который становится активным при нахождении соответствующего ему слайда в центре. На мобильном варианте картинка одна, но поверх нее появляются стрелочки навигации \(можно сделать как карусель или же затемнять кнопку если слайдер достиг края\) \n2. Нажатие на кнопку Register на Login попапе меняет разметку попапа на разметку Sign Up попапа согласно макету \(То есть нажатие не закрывает модал а просто меняет его наполнение\) \nВыполненные пункты: \n1. на десктоп варианте при клике на урезанную картинку слева или справа изображение меняется по принципу карусели \(например если нажать правую картинку та что была в центре на уезжает налево, а та что была видна наполовину оказывается справа\) \n2. Анимации плавного перемещения для слайдера \n3. логин попап соответствует верстке его закрытие происходит при клике вне попапа \n4. логин попап имеет 2 инпута \(логин и пароль\) при нажатии на кнопку Sign In показывается браузерный алерт с введенными данными \(для реализации можно использовать тег\)");
+// console.log("Ваша оценка - 80 баллов \nОтзыв по пунктам ТЗ: \nНе выполненные/не засчитанные пункты: \n1. Три точки внизу отображают \"номер слайда\", то есть каждому слайду соответствует свой кружочек, который становится активным при нахождении соответствующего ему слайда в центре. На мобильном варианте картинка одна, но поверх нее появляются стрелочки навигации \(можно сделать как карусель или же затемнять кнопку если слайдер достиг края\) \n2. Нажатие на кнопку Register на Login попапе меняет разметку попапа на разметку Sign Up попапа согласно макету \(То есть нажатие не закрывает модал а просто меняет его наполнение\) \nВыполненные пункты: \n1. на десктоп варианте при клике на урезанную картинку слева или справа изображение меняется по принципу карусели \(например если нажать правую картинку та что была в центре на уезжает налево, а та что была видна наполовину оказывается справа\) \n2. Анимации плавного перемещения для слайдера \n3. логин попап соответствует верстке его закрытие происходит при клике вне попапа \n4. логин попап имеет 2 инпута \(логин и пароль\) при нажатии на кнопку Sign In показывается браузерный алерт с введенными данными \(для реализации можно использовать тег\)");
