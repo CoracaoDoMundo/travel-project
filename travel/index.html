@@ -61,7 +61,7 @@
                 >
               </li>
               <li class="header_item header_item_hidden">
-                <a href="#popup" class="header_link account popup__link"
+                <a class="header_link account popup__link"
                   >Account</a
                 >
               </li>
@@ -73,7 +73,7 @@
             </ul>
           </nav>
           <button class="button header_button" type="button">
-            <a href="#popup" class="popup__link"
+            <a class="popup__link"
               ><span class="button_text header_button_text">Login</span></a
             >
           </button>
@@ -200,6 +200,7 @@
         <a class="anchor" id="destinations"></a>
         <h2 class="section_title">POPULAR DESTINATIONS</h2>
         <div class="slider_zone">
+          
           <div class="slider_arrows">
             <div class="slider_arrows_container">
               <a href="#" class="slider_arrow_left">
@@ -223,10 +224,11 @@
             <a href="#usa_pic" class="not_middle dot"></a>
           </div> -->
           <div class="slider__wrapper" id="slide-area">
-            <!-- <div class="button_slider btn-prev" id="btn-left"></div> -->
             <div class="carousel-wrapper" id="carousel-wrapper">
               <div class="carousel" id="carousel">
-                <!-- <div class="slide">
+                <div class="button_slider btn-prev" id="btn-left"></div>
+                <div class="button_slider btn-next" id="btn-right"></div>
+                <div class="slide-container left-slide">
                   <picture>
                     <source
                       srcset="img/img_slider_spain.jpg"
@@ -241,7 +243,7 @@
                   </picture>
                   <p class="slider_text">SPAIN</p>
                 </div>
-                <div class="slide">
+                <div class="slide-container middle-slide">
                   <picture>
                     <source
                       srcset="img/img_slider_japan.jpg"
@@ -256,52 +258,7 @@
                   </picture>
                   <p class="slider_text">JAPAN</p>
                 </div>
-                <div class="slide">
-                  <picture>
-                    <source
-                      srcset="img/img_slider_usa.jpg"
-                      media="(min-width: 450px)"
-                    />
-                    <img
-                      src="img/img_slider_usa_mobile.jpg"
-                      alt="Photo USA"
-                      class="slider_pic"
-                      id="usa_pic"
-                    />
-                  </picture>
-                  <p class="slider_text">USA</p>
-                </div> -->
-                <div class="slide-container" id="item-left">
-                  <picture>
-                    <source
-                      srcset="img/img_slider_spain.jpg"
-                      media="(min-width: 450px)"
-                    />
-                    <img
-                      src="img/img_slider_spain_mobile.jpg"
-                      alt="Photo Spain"
-                      class="slider_pic"
-                      id="spain_pic"
-                    />
-                  </picture>
-                  <p class="slider_text">SPAIN</p>
-                </div>
-                <div class="slide-container" id="item-active">
-                  <picture>
-                    <source
-                      srcset="img/img_slider_japan.jpg"
-                      media="(min-width: 450px)"
-                    />
-                    <img
-                      src="img/img_slider_japan_mobile.jpg"
-                      alt="Photo Japan"
-                      class="slider_pic"
-                      id="japan_pic"
-                    />
-                  </picture>
-                  <p class="slider_text">JAPAN</p>
-                </div>
-                <div class="slide-container" id="item-right">
+                <div class="slide-container right-slide">
                   <picture>
                     <source
                       srcset="img/img_slider_usa.jpg"
@@ -316,60 +273,14 @@
                   </picture>
                   <p class="slider_text">USA</p>
                 </div>
-                <!-- <div class="slide">
-                  <picture>
-                    <source
-                      srcset="img/img_slider_spain.jpg"
-                      media="(min-width: 450px)"
-                    />
-                    <img
-                      src="img/img_slider_spain_mobile.jpg"
-                      alt="Photo Spain"
-                      class="slider_pic"
-                      id="spain_pic"
-                    />
-                  </picture>
-                  <p class="slider_text">SPAIN</p>
-                </div>
-                <div class="slide">
-                  <picture>
-                    <source
-                      srcset="img/img_slider_japan.jpg"
-                      media="(min-width: 450px)"
-                    />
-                    <img
-                      src="img/img_slider_japan_mobile.jpg"
-                      alt="Photo Japan"
-                      class="slider_pic"
-                      id="japan_pic"
-                    />
-                  </picture>
-                  <p class="slider_text">JAPAN</p>
-                </div>
-                <div class="slide">
-                  <picture>
-                    <source
-                      srcset="img/img_slider_usa.jpg"
-                      media="(min-width: 450px)"
-                    />
-                    <img
-                      src="img/img_slider_usa_mobile.jpg"
-                      alt="Photo USA"
-                      class="slider_pic"
-                      id="usa_pic"
-                    />
-                  </picture>
-                  <p class="slider_text">USA</p>
-                </div> -->
               </div>
             </div>
-            <!-- <div class="button_slider btn-next" id="btn-right"></div> -->
           </div>
         </div>
         <div class="dots-wrapper">
-          <a href="#spain_pic" class="dot"></a>
-          <a href="#japan_pic" class="dot"></a>
-          <a href="#usa_pic" class="dot"></a>
+          <a class="dot left-dot"></a>
+          <a class="dot middle-dot active-dot"></a>
+          <a class="dot right-dot"></a>
         </div>
         <div class="button_zone">
           <button class="button slider_button" type="button">
@@ -392,7 +303,7 @@
         <div class="section_title_white">
           <h2 class="section_title section_title_travel">TRAVEL STORIES</h2>
         </div>
-        <div class="close_menu_second_part"></div>
+        <!-- <div class="close_menu_second_part"></div> -->
         <div class="foggy_bg">
           <div class="stories_block">
             <div class="story_item">
