@@ -6,16 +6,22 @@ const burgerItem = document.querySelector(".burger"),
   MENU_CLOSE_ITEM = document.querySelector(".header_nav_close"),
   menuCloseItemAcc = document.querySelector(".account"),
   menuCloseItemAll = document.querySelector(".close_menu"),
-  menuItems = document.querySelectorAll(".header_item");
+  menuItems = document.querySelectorAll(".header_item"),
+  logoHeader = document.querySelector(".header_wrapper"),
+  burgerLogo = document.querySelector(".header_burger");
 
 function openMenu() {
   MENU.classList.add("header_nav_activ");
   menuCloseItemAll.style.display = "block";
+  logoHeader.classList.add("header_wrapper_visible");
+  burgerLogo.classList.add("hidden");
 }
 
 function closeMenu() {
   MENU.classList.remove("header_nav_activ");
   menuCloseItemAll.style.display = "none";
+  logoHeader.classList.remove("header_wrapper_visible");
+  burgerLogo.classList.remove("hidden");
 }
 
 burgerItem.addEventListener("click", openMenu);
@@ -129,9 +135,6 @@ const CAROUSEL = document.querySelector(".carousel"),
 
 let newSlide;
 
-// dotLeft.addEventListener("click", moveSlides);
-// dotRight.addEventListener("click", moveSlides);
-// dotMiddle.addEventListener("click", activeDot);
 btnPrev.addEventListener("click", moveSlides);
 btnNext.addEventListener("click", moveSlides);
 
@@ -157,20 +160,9 @@ function removeAnimation() {
   CAROUSEL.classList.remove("transition-right");
 }
 
-// function activeDot() {
-//   let themes = document.querySelectorAll(".slider_text");
-//   dots.forEach((el) => el.classList.remove("active-dot"));
-
-//   for (let i = 0; i < themes.length; i++) {
-//     if (themes[0].innerText === "SPAIN") {
-//       dotMiddle.classList.add("active-dot");
-//     } else if (themes[0].innerText === "JAPAN") {
-//       dotRight.classList.add("active-dot");
-//     } else if (themes[0].innerText === "USA") {
-//       dotLeft.classList.add("active-dot");
-//     }
-//   }
-// }
+function removeSlide(item) {
+  CAROUSEL.removeChild(item);
+}
 
 function moveSlides() {
   if (this.classList.contains("btn-prev")) {
@@ -208,7 +200,7 @@ function moveSlides() {
   CAROUSEL.appendChild(newSlide);
 
   if (this.classList.contains("btn-prev")) {
-    CAROUSEL.removeChild(rightSlide);
+    setTimeout(removeSlide(rightSlide), 3000);
     middleSlide.classList.add("right-slide");
     middleSlide.classList.remove("middle-slide");
     leftSlide.classList.add("middle-slide");
@@ -217,7 +209,7 @@ function moveSlides() {
     middleSlide = leftSlide;
     leftSlide = newSlide;
   } else {
-    CAROUSEL.removeChild(leftSlide);
+    setTimeout(removeSlide(leftSlide), 3000);
     middleSlide.classList.add("left-slide");
     middleSlide.classList.remove("middle-slide");
     rightSlide.classList.add("middle-slide");

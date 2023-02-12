@@ -724,7 +724,7 @@ a.anchor {
 
 @keyframes move-left {
   from {
-    left: calc(((100vw / 1.8) + 60px) * -1);
+    left: -860px;
   }
   to {
     left: 0px;
@@ -738,7 +738,7 @@ a.anchor {
 
 @keyframes move-right {
   from {
-    left: calc((100vw / 1.8) + 60px);
+    left: 860px;
   }
   to {
     left: 0px;
@@ -926,6 +926,10 @@ a.anchor {
   .social_pic:hover {
     opacity: 0.8;
   }
+
+  .slider_arrow:hover path {
+    fill: #f2785c;
+  }
 }
 
 /* hover styles end */
@@ -939,6 +943,24 @@ a.anchor {
 
   .slider_pic {
     width: calc(100vw / 1.8);
+  }
+
+  @keyframes move-left {
+    from {
+      left: calc(((100vw / 1.8) + 60px) * -1);
+    }
+    to {
+      left: 0px;
+    }
+  }
+  
+  @keyframes move-right {
+    from {
+      left: calc((100vw / 1.8) + 60px);
+    }
+    to {
+      left: 0px;
+    }
   }
 
   .button_slider {
@@ -978,9 +1000,13 @@ a.anchor {
     transition: 0.3s all linear;
   }
 
-  .header_logo,
-  .burger {
-    margin: 3% 2% 0 0;
+  .header_wrapper_visible {
+    position: absolute;
+    top: 0;
+  }
+
+  .hidden {
+    display: none;
   }
 
   .close_menu {
@@ -1062,11 +1088,6 @@ a.anchor {
     margin: 20% 0 0 5%;
   }
 
-  /* .slider_pic {
-    max-width: 370px;
-    max-height: 370px;
-  } */
-
   .popup__content {
     width: 90%;
   }
@@ -1087,6 +1108,36 @@ a.anchor {
   .intro {
     max-height: 680px;
     margin-bottom: 5%;
+  }
+
+  .carousel {
+    gap: 25px;
+  }
+
+  .slider_pic {
+    width: calc(100vw / 1.7);
+  }
+
+  .button_slider {
+    width: calc((100vw / 2) - ((100vw / 1.7) / 2));
+  }
+
+  @keyframes move-left {
+    from {
+      left: calc(((100vw / 1.7) + 25px) * -1);
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  @keyframes move-right {
+    from {
+      left: calc((100vw / 1.7) + 25px);
+    }
+    to {
+      left: 0px;
+    }
   }
 
   .section_title {
@@ -1171,6 +1222,47 @@ a.anchor {
   .steps_items {
     margin-left: 0;
   }
+
+  .dot {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 460px) {
+  .carousel {
+    gap: 20px;
+  }
+
+  .slider_pic {
+    width: calc(100vw / 1.6);
+  }
+
+  .button_slider {
+    width: calc((100vw / 2) - ((100vw / 1.6) / 2));
+  }
+
+  @keyframes move-left {
+    from {
+      left: calc(((100vw / 1.6) + 20px) * -1);
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  @keyframes move-right {
+    from {
+      left: calc((100vw / 1.6) + 20px);
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  .slider_text {
+    bottom: 0;
+  }
 }
 
 @media screen and (max-width: 450px) {
@@ -1225,20 +1317,42 @@ a.anchor {
     margin: 0;
   }
 
+  .carousel {
+    gap: 20px;
+  }
+
   .dot {
     width: 8px;
     height: 8px;
-    margin: 0;
+    margin-right: 6px;
+  }
+
+  .dots-wrapper {
+    margin-bottom: 20px;
+  }
+
+  @keyframes move-left {
+    from {
+      left: -380px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  @keyframes move-right {
+    from {
+      left: 380px;
+    }
+    to {
+      left: 0px;
+    }
   }
 
   .slider_marks_small {
     gap: 6px;
     bottom: 19px;
     left: 45%;
-  }
-
-  .dots-wrapper {
-    display: none;
   }
 
   .slider_arrows_container {
@@ -1252,9 +1366,14 @@ a.anchor {
   }
 
   .slider_arrows {
+    display: block;
     position: absolute;
     z-index: 1;
     top: 4.4em;
+  }
+
+  .slider_pic {
+    width: 360px;
   }
 }
 
@@ -1313,6 +1432,43 @@ a.anchor {
     margin-bottom: 4px;
   }
 
+  .slider {
+    position: relative;
+  }
+
+  .slider_pic {
+    width: calc(100vw - 30px);
+  }
+
+  @keyframes move-left {
+    from {
+      left: calc((100vw - 15px) * -1);
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  @keyframes move-right {
+    from {
+      left: calc(100vw - 15px);
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  .slider_arrows_container {
+    gap: calc(100vw - 100px);
+  }
+
+  .dots-wrapper {
+    margin: 0;
+    position: absolute;
+    left: calc((100vw / 2) - 21px);
+    top: 74%;
+  }
+
   .section_title_travel {
     margin-bottom: 0.3em;
   }
@@ -1347,14 +1503,6 @@ a.anchor {
 }
 
 @media screen and (max-width: 370px) {
-  .slider_pic {
-    width: 310px;
-  }
-
-  .slider_arrows_container {
-    gap: 245px;
-  }
-
   .slider_arrows {
     top: 4em;
   }
