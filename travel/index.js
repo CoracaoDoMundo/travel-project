@@ -8,13 +8,15 @@ const burgerItem = document.querySelector(".burger"),
   menuCloseItemAll = document.querySelector(".close_menu"),
   menuItems = document.querySelectorAll(".header_item"),
   logoHeader = document.querySelector(".header_wrapper"),
-  burgerLogo = document.querySelector(".header_burger");
+  burgerLogo = document.querySelector(".header_burger"),
+  body = document.querySelector(".body");
 
 function openMenu() {
   MENU.classList.add("header_nav_activ");
   menuCloseItemAll.style.display = "block";
   logoHeader.classList.add("header_wrapper_visible");
   burgerLogo.classList.add("hidden");
+  body.style.overflow = "hidden";
 }
 
 function closeMenu() {
@@ -22,6 +24,7 @@ function closeMenu() {
   menuCloseItemAll.style.display = "none";
   logoHeader.classList.remove("header_wrapper_visible");
   burgerLogo.classList.remove("hidden");
+  body.style.overflow = "visible";
 }
 
 burgerItem.addEventListener("click", openMenu);
@@ -164,6 +167,10 @@ function removeSlide(item) {
   CAROUSEL.removeChild(item);
 }
 
+// function deleteSlide(slide) {
+//   CAROUSEL.addEventListener("transitionend", CAROUSEL.removeChild(slide));
+// }
+
 function moveSlides() {
   if (this.classList.contains("btn-prev")) {
     createLeftSlide();
@@ -201,6 +208,7 @@ function moveSlides() {
 
   if (this.classList.contains("btn-prev")) {
     setTimeout(removeSlide(rightSlide), 3000);
+    // deleteSlide(rightSlide);
     middleSlide.classList.add("right-slide");
     middleSlide.classList.remove("middle-slide");
     leftSlide.classList.add("middle-slide");
@@ -210,6 +218,7 @@ function moveSlides() {
     leftSlide = newSlide;
   } else {
     setTimeout(removeSlide(leftSlide), 3000);
+    // deleteSlide(leftSlide);
     middleSlide.classList.add("left-slide");
     middleSlide.classList.remove("middle-slide");
     rightSlide.classList.add("middle-slide");
@@ -223,5 +232,3 @@ function moveSlides() {
 }
 
 // SLIDER END //
-
-// console.log("Ваша оценка - 80 баллов \nОтзыв по пунктам ТЗ: \nНе выполненные/не засчитанные пункты: \n1. Три точки внизу отображают \"номер слайда\", то есть каждому слайду соответствует свой кружочек, который становится активным при нахождении соответствующего ему слайда в центре. На мобильном варианте картинка одна, но поверх нее появляются стрелочки навигации \(можно сделать как карусель или же затемнять кнопку если слайдер достиг края\) \n2. Нажатие на кнопку Register на Login попапе меняет разметку попапа на разметку Sign Up попапа согласно макету \(То есть нажатие не закрывает модал а просто меняет его наполнение\) \nВыполненные пункты: \n1. на десктоп варианте при клике на урезанную картинку слева или справа изображение меняется по принципу карусели \(например если нажать правую картинку та что была в центре на уезжает налево, а та что была видна наполовину оказывается справа\) \n2. Анимации плавного перемещения для слайдера \n3. логин попап соответствует верстке его закрытие происходит при клике вне попапа \n4. логин попап имеет 2 инпута \(логин и пароль\) при нажатии на кнопку Sign In показывается браузерный алерт с введенными данными \(для реализации можно использовать тег\)");
